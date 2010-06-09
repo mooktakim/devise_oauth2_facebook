@@ -8,10 +8,11 @@ Gem::Specification.new do |s|
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.date = %q{2010-06-08}
+  s.date = %q{2010-06-09}
   s.files = [
-    "app/controllers/facebook_oauth2_controller.rb",
+    "app/controllers/devise/facebook_consumer_controller.rb",
      "lib/devise_oauth2_facebook.rb",
+     "lib/devise_oauth2_facebook/engine.rb",
      "lib/devise_oauth2_facebook/model.rb",
      "lib/devise_oauth2_facebook/routes.rb",
      "lib/devise_oauth2_facebook/strategy.rb"

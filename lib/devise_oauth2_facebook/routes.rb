@@ -1,14 +1,13 @@
 # encoding: utf-8
 
-ActionController::Routing::RouteSet::Mapper.class_eval do
+ActionDispatch::Routing::Mapper.class_eval do
 
-  protected
+    protected
 
-  def devise_oauth2_facebook(routes, mapping)    
-    routes.with_options(:controller => 'facebook_oauth2', :name_prefix => nil) do |session|
-      session.send(:"facebook_oauth2", 'facebook_oauth2', :action => 'authorise', :conditions => { :method => :get })
-      session.send(:"facebook_oauth2_callback", 'facebook_oauth2/callback', :action => 'callback', :conditions => { :method => :get })
+    def devise_facebook_consumer(mapping, controllers)
+      scope mapping.full_path do
+        get mapping.path_names[:fb_auth], :to => "#{controllers[:facebook_consumer]}#auth", :as => :"fb_#{mapping.name}_auth"
+        get mapping.path_names[:fb_callback], :to => "#{controllers[:facebook_consumer]}#callback", :as => :"fb_#{mapping.name}_callback"
+      end
     end
-  end
-  
 end
