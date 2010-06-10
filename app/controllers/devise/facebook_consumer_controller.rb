@@ -7,7 +7,7 @@ class Devise::FacebookConsumerController < ApplicationController
   end
 
   def callback
-    Rails.logger.debug "FART"
+    Rails.logger.info "FART"
     url = send("fb_#{resource_name}_callback_url".to_sym)
     client = Devise.fb_client
     client.authorization.process_callback(params[:code], :redirect_uri => url)
