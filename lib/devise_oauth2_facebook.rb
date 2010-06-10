@@ -24,23 +24,15 @@ module Devise
   
   mattr_accessor :facebook_permissions
   @@facebook_permissions = 'offline_access'
-
-  mattr_accessor :facebook_auto_create_account
-  @@facebook_auto_create_account = true
   
-  def fb_client(token = nil)
-    if token.present?
-      FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret)
-    else
-      FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret, :token => token)
-    end
-  end
+  mattr_accessor :facebook_callback_url
+  @@facebook_callback_url = nil
   
 end
 
 Devise.add_module(:devise_oauth2_facebook,
   # :strategy => true,
   :controller => :facebook_consumer,
-  :route => :facebook_consumer
-  # :model => 'devise_oauth2_facebook/model'
+  :route => :facebook_consumer,
+  :model => 'devise_oauth2_facebook/model'
 )

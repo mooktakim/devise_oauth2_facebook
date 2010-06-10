@@ -1,37 +1,53 @@
-# encoding: utf-8
 require 'devise/strategies/base'
 
-module Devise #:nodoc:
-  module DeviseOauth2Facebook #:nodoc:
-    module Strategies #:nodoc:
+module Devise
+  module Strategies
+    class DeviseOauth2Facebook < Authenticatable
+      include DeviseOauth2Facebook::FacebookConsumerHelper
+      
+      def authenticate!
+        resource_class = mapping.to
+        
+        client = facebook_client
+        client.authorization.process_callback(authentication_hash[:code], :redirect_uri => Devise.facebook_callback_url)
 
-      # Default strategy for signing in a user using Facebook OAuth2.
-      # Redirects to sign_in page if it's not authenticated
-      #
-      class DeviseOauth2Facebook < ::Devise::Strategies::Base
+        token = client.access_token
+        fb_user = client.selection.me.info!
 
-        def valid?
-          mapping.to.respond_to?('authenticate_devise_oauth2_facebook')
+        Rails.logger.info "FB USER:"
+        Rails.logger.info fb_user.inspect
+
+        resource = resource_class.find_with_facebook_user(fb_user, token)
+        unless resource
+          resource = resource_class.create_with_facebook_user(fb_user, token)
         end
+        
+        success!(resource)
+      end
 
-        # Authenticate user with Facebook Connect.
-        #
-        def authenticate!
-          begin
-            if resource = mapping.to.authenticate(params[scope])
-              success!(resource)
-            else
-              fail(:invalid)
-            end
-          # NOTE: Facebooker::Session::SessionExpired errors handled in the controller.
-          rescue => e
-            fail!(e.message)
-          end
-        end
+    private
 
+      # TokenAuthenticatable request is valid for any controller and any verb.
+      def valid_request?
+        true
+      end
+
+      # Do not use remember_me behavir with token.
+      def remember_me?
+        true
+      end
+
+      # Try both scoped and non scoped keys.
+      def params_auth_hash
+        params[scope] || params
+      end
+
+      # Overwrite authentication keys to use token_authentication_key.
+      def authentication_keys
+        @authentication_keys ||= [mapping.to.token_authentication_key]
       end
     end
   end
 end
 
-Warden::Strategies.add(:devise_oauth2_facebook, Devise::DeviseOauth2Facebook::Strategies::DeviseOauth2Facebook)
+Warden::Strategies.add(:devise_oauth2_facebook, Devise::Strategies::DeviseOauth2Facebook)
