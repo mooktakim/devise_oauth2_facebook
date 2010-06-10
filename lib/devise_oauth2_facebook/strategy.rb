@@ -3,7 +3,7 @@ require 'devise/strategies/base'
 module Devise
   module Strategies
     class DeviseOauth2Facebook < Authenticatable
-      include DeviseOauth2Facebook::FacebookConsumerHelper
+      include ::DeviseOauth2Facebook::FacebookConsumerHelper
       
       def authenticate!
         resource_class = mapping.to
