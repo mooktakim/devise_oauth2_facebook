@@ -27,6 +27,15 @@ module Devise
 
   mattr_accessor :facebook_auto_create_account
   @@facebook_auto_create_account = true
+  
+  def fb_client(token = nil)
+    if token.present?
+      FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret)
+    else
+      FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret, :token => token)
+    end
+  end
+  
 end
 
 Devise.add_module(:devise_oauth2_facebook,
