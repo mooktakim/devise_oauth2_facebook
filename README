@@ -1,0 +1,35 @@
+Only Rails 3 is supported.
+
+Uses fbgraph (http://github.com/nsanta/fbgraph)
+Could use the Oauth2 gem directly, but it is more than likely that you
+would want to use other features of facebook (ie post feed updates).
+
+
+How to use
+----------
+Setup devise (http://github.com/plataformatec/devise), use Rails 3
+
+Include the gem in Gemfile after devise:
+  gem 'devise'
+  gem 'devise_oauth2_facebook'
+
+Include the ':devise_oauth2_facebook' in your model:
+
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable, :devise_oauth2_facebook
+
+
+Add the following config options:
+
+$ config/initializers/devise.rb
+
+  config.facebook_api_key = "KEY"
+  config.facebook_api_secret = "SECRET"
+  config.facebook_permissions = 'offline_access,email,publish_stream'
+
+Good minimum to have is "offline_access,email"
+
+Create a migration file to add the columns:
+
+  add_column :users, :facebook_uid, :string
+  add_column :users, :facebook_token, :string
