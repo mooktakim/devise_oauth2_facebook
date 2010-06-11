@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 ActionDispatch::Routing::Mapper.class_eval do
 
     protected

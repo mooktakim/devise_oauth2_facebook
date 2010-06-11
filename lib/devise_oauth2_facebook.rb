@@ -1,6 +1,3 @@
-# encoding: utf-8
-
-#require 'devise_oauth2_facebook' if defined?(Rails)
 require 'devise'
 require 'fbgraph'
 
