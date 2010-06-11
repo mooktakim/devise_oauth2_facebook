@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "lib/devise_oauth2_facebook/model.rb",
      "lib/devise_oauth2_facebook/routes.rb"
   ]
+  s.homepage = %q{http://github.com/mooktakim/devise_oauth2_facebook}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
