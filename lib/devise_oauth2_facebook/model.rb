@@ -12,7 +12,11 @@ module Devise
         self.send("#{self.class.facebook_token_field}=".to_sym, token)
         self.email = fb_user.email.downcase
         update_facebook_user(fb_user)
-        self.save_without_validation
+        if self.respond_to?(:remember_me!)
+          self.remember_me!
+        else
+          self.save_without_validation
+        end
       end
       
       def update_facebook_user(fb_user)
@@ -20,10 +24,6 @@ module Devise
       end
 
       def active?
-        true
-      end
-      
-      def remember_me
         true
       end
 
