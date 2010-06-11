@@ -22,6 +22,10 @@ module Devise
       def active?
         true
       end
+      
+      def remember_me
+        true
+      end
 
       protected
 
