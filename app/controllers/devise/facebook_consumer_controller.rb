@@ -30,11 +30,4 @@ class Devise::FacebookConsumerController < ApplicationController
     sign_in_and_redirect(resource_name, resource)
   end
 
-  def callback_2
-    Devise.facebook_callback_url = send("fb_#{resource_name}_callback_url".to_sym)
-    resource = warden.authenticate!(:scope => resource_name)
-    set_flash_message :notice, :signed_in
-    sign_in_and_redirect(resource_name, resource)
-  end
-
 end

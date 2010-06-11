@@ -5,9 +5,6 @@ require 'devise'
 require 'fbgraph'
 
 require 'devise_oauth2_facebook/engine'
-#require 'devise_oauth2_facebook/routes'
-# require 'devise_oauth2_facebook/model'
-require 'devise_oauth2_facebook/strategy'
 
 module Devise
   mattr_accessor :facebook_uid_field
