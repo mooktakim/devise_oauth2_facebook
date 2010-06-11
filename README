@@ -33,3 +33,4 @@ Create a migration file to add the columns:
 
   add_column :users, :facebook_uid, :string
   add_column :users, :facebook_token, :string
+
