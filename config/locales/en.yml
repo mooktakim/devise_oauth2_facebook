@@ -1,0 +1,4 @@
+en:
+  devise:
+    facebook_consumer:
+      signed_in: 'Signed in successfully.'

@@ -5,7 +5,7 @@ require 'devise'
 require 'fbgraph'
 
 require 'devise_oauth2_facebook/engine'
-require 'devise_oauth2_facebook/routes'
+#require 'devise_oauth2_facebook/routes'
 # require 'devise_oauth2_facebook/model'
 require 'devise_oauth2_facebook/strategy'
 
@@ -23,7 +23,7 @@ module Devise
   @@facebook_api_secret = nil
   
   mattr_accessor :facebook_permissions
-  @@facebook_permissions = 'offline_access'
+  @@facebook_permissions = 'offline_access,email'
   
   mattr_accessor :facebook_callback_url
   @@facebook_callback_url = nil
@@ -31,7 +31,7 @@ module Devise
 end
 
 Devise.add_module(:devise_oauth2_facebook,
-  # :strategy => true,
+  :strategy => false,
   :controller => :facebook_consumer,
   :route => :facebook_consumer,
   :model => 'devise_oauth2_facebook/model'

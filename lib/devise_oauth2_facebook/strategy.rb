@@ -1,11 +1,12 @@
-require 'devise/strategies/base'
+require 'fbgraph'
+require 'devise/strategies/authenticatable'
 
 module Devise
   module Strategies
     class DeviseOauth2Facebook < Authenticatable
-      include ::DeviseOauth2Facebook::FacebookConsumerHelper
       
       def authenticate!
+        raise "FART"
         resource_class = mapping.to
         
         client = facebook_client
@@ -26,26 +27,15 @@ module Devise
       end
 
     private
-
-      # TokenAuthenticatable request is valid for any controller and any verb.
-      def valid_request?
-        true
+    
+      def facebook_client(token = nil)
+        if token.present?
+          FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret)
+        else
+          FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret, :token => token)
+        end
       end
-
-      # Do not use remember_me behavir with token.
-      def remember_me?
-        true
-      end
-
-      # Try both scoped and non scoped keys.
-      def params_auth_hash
-        params[scope] || params
-      end
-
-      # Overwrite authentication keys to use token_authentication_key.
-      def authentication_keys
-        @authentication_keys ||= [mapping.to.token_authentication_key]
-      end
+      
     end
   end
 end

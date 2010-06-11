@@ -17,6 +17,10 @@ module Devise
         self.save_without_validation
       end
 
+      def active?
+        true
+      end
+
       protected
 
       module ClassMethods
