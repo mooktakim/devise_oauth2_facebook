@@ -34,3 +34,5 @@ Create a migration file to add the columns:
   add_column :users, :facebook_uid, :string
   add_column :users, :facebook_token, :string
 
+Finally, update your view to include "Login with facebook" link:
+  <%= link_to "Login with facebook", fb_user_auth_path %>
