@@ -9,7 +9,7 @@ module Devise
         self.send("#{self.class.facebook_token_field}=".to_sym, token)
         self.email = fb_user.email.to_s.downcase if fb_user.respond_to?(:email)
         update_facebook_user(fb_user)
-        self.save_without_validation
+        self.save(false)
       end
       
       def update_facebook_user(fb_user)
