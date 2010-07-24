@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{devise_oauth2_facebook}
-  s.version = "0.1.44"
+  s.version = "0.1.45"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mooktakim Ahmed"]
-  s.date = %q{2010-07-12}
+  s.date = %q{2010-07-24}
   s.email = %q{mooktakim@fluxter.co.uk}
   s.extra_rdoc_files = [
     "README"
