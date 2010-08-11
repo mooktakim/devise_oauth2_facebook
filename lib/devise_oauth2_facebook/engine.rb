@@ -4,7 +4,7 @@ module DeviseOauth2Facebook
   class Engine < ::Rails::Engine
     config.devise_oauth2_facebook = DeviseOauth2Facebook
     
-    config.autoload_paths << File.expand_path(File.join(File.dirname(__FILE__), ".."))
+    config.autoload_paths << File.expand_path(File.join(File.dirname(__FILE__), "..")) if config.respond_to? :autoload_paths
     
   end
 end
