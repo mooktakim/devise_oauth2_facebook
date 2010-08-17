@@ -9,7 +9,7 @@ begin
     gem.files = Dir["{lib}/**/*", "README", "{app}/**/*", "{config}/**/*"]
     # other fields that would normally go in your gemspec
     # like authors, email and has_rdoc can also be included here
-    gem.add_dependency 'devise'
+    gem.add_dependency 'devise', ">= 1.1.1"
     gem.add_dependency 'fbgraph'
   end
 rescue
