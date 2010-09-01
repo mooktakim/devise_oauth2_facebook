@@ -22,6 +22,9 @@ module Devise
   mattr_accessor :facebook_callback_url
   @@facebook_callback_url = nil
   
+  mattr_accessor :facebook_canvas_url
+  @@facebook_canvas_url = nil
+  
 end
 
 Devise.add_module(:devise_oauth2_facebook,

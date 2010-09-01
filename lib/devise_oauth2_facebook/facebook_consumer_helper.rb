@@ -7,5 +7,4 @@ module DeviseOauth2Facebook::FacebookConsumerHelper
       FBGraph::Client.new(:client_id => Devise.facebook_api_key, :secret_id => Devise.facebook_api_secret, :token => token)
     end
   end
-  
 end
