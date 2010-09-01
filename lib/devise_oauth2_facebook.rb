@@ -22,8 +22,13 @@ module Devise
   mattr_accessor :facebook_callback_url
   @@facebook_callback_url = nil
   
+  mattr_accessor :facebook_canvas_app
+  @@facebook_canvas_app = false
+  
   mattr_accessor :facebook_canvas_url
   @@facebook_canvas_url = nil
+  
+
   
 end
 

@@ -5,7 +5,11 @@ class Devise::FacebookConsumerController < ApplicationController
   def auth
     url = send("#{resource_name}_fb_callback_url".to_sym)
     uri = facebook_client.authorization.authorize_url(:redirect_uri => url , :scope => Devise.facebook_permissions)
-    render :layout => false, :inline => "<script type='text/javascript' charset='utf-8'>top.location.href='#{uri}';</script>"
+    if Devise.facebook_canvas_app
+      render :layout => false, :inline => "<script type='text/javascript' charset='utf-8'>top.location.href='#{uri}';</script>"
+    else
+      redirect_to uri
+    end
   end
   
   def callback
@@ -30,8 +34,13 @@ class Devise::FacebookConsumerController < ApplicationController
       }
     end
     set_flash_message :notice, :signed_in
-    sign_in(resource_name, resource)
-    redirect_to Devise.facebook_canvas_url
+    
+    if Devise.facebook_canvas_app
+      sign_in(resource_name, resource)
+      redirect_to Devise.facebook_canvas_url
+    else
+      sign_in_and_redirect(resource_name, resource)
+    end
   end
 
 end

@@ -5,7 +5,7 @@ Could use the Oauth2 gem directly, but it is more than likely that you
 would want to use other features of facebook (ie post feed updates).
 
 
-How to use
+How to use, web applications
 ----------
 Setup devise (http://github.com/plataformatec/devise), use Rails 3
 
@@ -36,3 +36,17 @@ Create a migration file to add the columns:
 
 Finally, update your view to include "Login with facebook" link:
   <%= link_to "Login with facebook", user_fb_auth_path %>
+  
+How to use, facebook canvas applications
+
+------
+
+As above, except with this configuration:
+
+$ config/initializers/devise.rb
+
+  config.facebook_api_key = "KEY"
+  config.facebook_api_secret = "SECRET"
+  config.facebook_permissions = 'offline_access,email,publish_stream'
+  config.facebook_canvas_app = true
+  config.facebook_canvas_url = 'your_facebook_canvas_app_url'
