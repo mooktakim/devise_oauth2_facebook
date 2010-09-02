@@ -1,7 +1,7 @@
 module Devise
   module Models
 
-    module DeviseOauth2FacebookCanvas
+    module DeviseOauth2CanvasFacebook
       extend ActiveSupport::Concern
 
       def do_update_facebook_user(fb_user, token)

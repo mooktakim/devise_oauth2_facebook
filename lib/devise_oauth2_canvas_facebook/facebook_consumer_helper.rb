@@ -1,4 +1,4 @@
-module DeviseOauth2FacebookCanvas::FacebookConsumerHelper
+module DeviseOauth2CanvasFacebook::FacebookConsumerHelper
   
   def facebook_client(token = nil)
     if token.present?

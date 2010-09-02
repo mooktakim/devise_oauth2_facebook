@@ -1,10 +1,10 @@
 begin
   require "jeweler"
   Jeweler::Tasks.new do |gem|
-    gem.name = "devise_oauth2_facebook_canvas"
+    gem.name = "devise_oauth2_canvas_facebook"
     gem.summary = "Devise OAuth2 Facebook extension"
     gem.email = "info@ninajansen.dk"
-    gem.homepage = "http://github.com/ninajansen/devise_oauth2_facebook_canvas"
+    gem.homepage = "http://github.com/ninajansen/devise_oauth2_canvas_facebook"
     gem.authors = ["Nina Jansen"]
     gem.files = Dir["{lib}/**/*", "README", "{app}/**/*", "{config}/**/*"]
     # other fields that would normally go in your gemspec

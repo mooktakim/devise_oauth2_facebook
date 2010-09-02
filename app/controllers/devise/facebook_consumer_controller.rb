@@ -1,6 +1,6 @@
 class Devise::FacebookConsumerController < ApplicationController
   include Devise::Controllers::InternalHelpers
-  include DeviseOauth2FacebookCanvas::FacebookConsumerHelper
+  include DeviseOauth2CanvasFacebook::FacebookConsumerHelper
   
   def auth
     url = send("#{resource_name}_fb_callback_url".to_sym)

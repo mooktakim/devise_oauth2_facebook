@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{devise_oauth2_facebook_canvas}
+  s.name = %q{devise_oauth2_canvas_facebook}
   s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
     "README",
      "app/controllers/devise/facebook_consumer_controller.rb",
      "config/locales/en.yml",
-     "lib/devise_oauth2_facebook_canvas.rb",
-     "lib/devise_oauth2_facebook_canvas/engine.rb",
-     "lib/devise_oauth2_facebook_canvas/facebook_consumer_helper.rb",
-     "lib/devise_oauth2_facebook_canvas/model.rb",
-     "lib/devise_oauth2_facebook_canvas/routes.rb"
+     "lib/devise_oauth2_canvas_facebook.rb",
+     "lib/devise_oauth2_canvas_facebook/engine.rb",
+     "lib/devise_oauth2_canvas_facebook/facebook_consumer_helper.rb",
+     "lib/devise_oauth2_canvas_facebook/model.rb",
+     "lib/devise_oauth2_canvas_facebook/routes.rb"
   ]
-  s.homepage = %q{http://github.com/ninajansen/devise_oauth2_facebook_canvas}
+  s.homepage = %q{http://github.com/ninajansen/devise_oauth2_canvas_facebook}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
