@@ -26,7 +26,7 @@ module Devise
         Devise::Models.config(self, :facebook_uid_field, :facebook_token_field)
 
         def find_with_facebook_user(fb_user, token)
-          user = where(facebook_uid_field.to_sym => fb_user.id).first || where(:email => fb_user.email.downcase).first
+          user = where(facebook_uid_field.to_sym => fb_user.id).first
           if user
             user.do_update_facebook_user(fb_user, token)
           end
