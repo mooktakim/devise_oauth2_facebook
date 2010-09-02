@@ -4,13 +4,13 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{devise_oauth2_facebook}
-  s.version = "0.1.49"
+  s.name = %q{devise_oauth2_facebook_canvas}
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Mooktakim Ahmed"]
-  s.date = %q{2010-08-17}
-  s.email = %q{mooktakim@fluxter.co.uk}
+  s.authors = ["Nina Jansen"]
+  s.date = %q{2010-09-02}
+  s.email = %q{info@ninajansen.dk}
   s.extra_rdoc_files = [
     "README"
   ]
@@ -18,13 +18,13 @@ Gem::Specification.new do |s|
     "README",
      "app/controllers/devise/facebook_consumer_controller.rb",
      "config/locales/en.yml",
-     "lib/devise_oauth2_facebook.rb",
-     "lib/devise_oauth2_facebook/engine.rb",
-     "lib/devise_oauth2_facebook/facebook_consumer_helper.rb",
-     "lib/devise_oauth2_facebook/model.rb",
-     "lib/devise_oauth2_facebook/routes.rb"
+     "lib/devise_oauth2_facebook_canvas.rb",
+     "lib/devise_oauth2_facebook_canvas/engine.rb",
+     "lib/devise_oauth2_facebook_canvas/facebook_consumer_helper.rb",
+     "lib/devise_oauth2_facebook_canvas/model.rb",
+     "lib/devise_oauth2_facebook_canvas/routes.rb"
   ]
-  s.homepage = %q{http://github.com/mooktakim/devise_oauth2_facebook}
+  s.homepage = %q{http://github.com/ninajansen/devise_oauth2_facebook_canvas}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}

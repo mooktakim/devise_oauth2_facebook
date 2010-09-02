@@ -11,12 +11,12 @@ Setup devise (http://github.com/plataformatec/devise), use Rails 3
 
 Include the gem in Gemfile after devise:
   gem 'devise'
-  gem 'devise_oauth2_facebook'
+  gem 'devise_oauth2_facebook_canvas'
 
-Include the ':devise_oauth2_facebook' in your model:
+Include the ':devise_oauth2_facebook_canvas' in your model:
 
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :devise_oauth2_facebook
+         :recoverable, :rememberable, :trackable, :validatable, :devise_oauth2_facebook_canvas
 
 
 Add the following config options:

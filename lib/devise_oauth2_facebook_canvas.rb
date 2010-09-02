@@ -1,7 +1,7 @@
 require 'devise'
 require 'fbgraph'
 
-require 'devise_oauth2_facebook/engine'
+require 'devise_oauth2_facebook_canvas/engine'
 
 module Devise
   mattr_accessor :facebook_uid_field
@@ -32,9 +32,9 @@ module Devise
   
 end
 
-Devise.add_module(:devise_oauth2_facebook,
+Devise.add_module(:devise_oauth2_facebook_canvas,
   :strategy => false,
   :controller => :facebook_consumer,
   :route => :facebook_consumer,
-  :model => 'devise_oauth2_facebook/model'
+  :model => 'devise_oauth2_facebook_canvas/model'
 )
