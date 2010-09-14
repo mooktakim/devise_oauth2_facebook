@@ -21,9 +21,9 @@ class Devise::FacebookConsumerController < ApplicationController
     token = client.access_token
     fb_user = client.selection.me.info!
 
-    resource = resource_class.find_with_facebook_user(fb_user, token)
+    resource = resource_class.find_with_facebook_user(fb_user, token, client)
     unless resource
-      resource = resource_class.create_with_facebook_user(fb_user, token)
+      resource = resource_class.create_with_facebook_user(fb_user, token, client)
     end
     if resource_class.respond_to?(:serialize_into_cookie)
       resource.remember_me!
