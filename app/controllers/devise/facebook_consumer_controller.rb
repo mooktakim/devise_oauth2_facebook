@@ -3,8 +3,14 @@ class Devise::FacebookConsumerController < ApplicationController
   include DeviseOauth2CanvasFacebook::FacebookConsumerHelper
   
   def auth
+    if !!params[:permission]
+      scope =  Devise.facebook_permissions + ",#{params[:permission]}"
+    else
+      scope = Devise.facebook_permissions
+    end
+
     url = send("#{resource_name}_fb_callback_url".to_sym)
-    uri = facebook_client.authorization.authorize_url(:redirect_uri => url , :scope => Devise.facebook_permissions)
+    uri = facebook_client.authorization.authorize_url(:redirect_uri => url, :scope => scope)
     if Devise.facebook_canvas_app
       render :layout => false, :inline => "<script type='text/javascript' charset='utf-8'>top.location.href='#{uri}';</script>"
     else
