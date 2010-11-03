@@ -10,11 +10,15 @@ class Devise::FacebookConsumerController < ApplicationController
     end
     url = send("#{resource_name}_fb_callback_url".to_sym)
     if params[:permission] && params[:go_back]
-      url = url + "?permission=#{params[:permission]}&go_back=#{params[:go_back]}"
+      url = url + "?permission=#{params[:permission]}&go_back=#{params[:go_back]}&abs_url=#{params[:abs_url]}"
     elsif params[:permission]
        url = url + "?permission=#{params[:permission]}"
     elsif params[:go_back]
        url = url + "?go_back=#{params[:go_back]}"
+    end
+    
+    if params[:go_back] && params[:abs_url]
+      url = url + "&abs_url=#{params[:abs_url]}"
     end
     
     uri = facebook_client.authorization.authorize_url(:redirect_uri => url, :scope => scope)
@@ -33,6 +37,10 @@ class Devise::FacebookConsumerController < ApplicationController
       url = url + "?permission=#{params[:permission]}"
     elsif params[:go_back]
       url = url + "?go_back=#{CGI::escape(params[:go_back])}"
+    end
+    
+    if params[:go_back] && params[:abs_url]
+      url = url + "&abs_url=#{params[:abs_url]}"
     end
       
     client = facebook_client
@@ -66,7 +74,9 @@ class Devise::FacebookConsumerController < ApplicationController
     
     if Devise.facebook_canvas_app
       sign_in(resource_name, resource)
-      if params[:go_back]
+      if params[:go_back] && params[:abs_url] == "1"
+        redirect_to params[:go_back]
+      elsif params[:go_back]
         redirect_to Devise.facebook_canvas_url + params[:go_back]
       else
         redirect_to Devise.facebook_canvas_url
