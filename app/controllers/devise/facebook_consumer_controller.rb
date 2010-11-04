@@ -77,12 +77,10 @@ class Devise::FacebookConsumerController < ApplicationController
       if params[:go_back] && !!params[:abs_url] && params[:abs_url] != "0"
         if params[:abs_url] == "1"
           redirect_to params[:go_back]
+        elsif !!params[:go_back].match(/\?/)
+          redirect_to params[:go_back] + "&abs_url=#{params[:abs_url]}"
         else
-          if !!params[:go_back].match(/\?/)
-            redirect_to params[:go_back] + "&abs_url=params[:abs_url]"
-          else
-            redirect_to params[:go_back] + "?abs_url=params[:abs_url]"
-          end
+          redirect_to params[:go_back] + "?abs_url=#{params[:abs_url]}"
         end
       elsif params[:go_back]
         redirect_to Devise.facebook_canvas_url + params[:go_back]
