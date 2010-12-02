@@ -12,7 +12,7 @@ module Devise
         self.save(:validate => false)
       end
       
-      def update_facebook_user(fb_user, client)
+      def update_facebook_user(fb_user, client, options)
         # override me
       end
 
