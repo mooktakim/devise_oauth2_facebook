@@ -2,6 +2,7 @@ require 'devise'
 require 'fbgraph'
 
 require 'devise_oauth2_facebook/engine'
+require 'devise_oauth2_facebook/facebook_consumer_controller_methods.rb'
 
 module Devise
   mattr_accessor :facebook_uid_field
@@ -15,13 +16,13 @@ module Devise
 
   mattr_accessor :facebook_api_secret
   @@facebook_api_secret = nil
-  
+
   mattr_accessor :facebook_permissions
   @@facebook_permissions = 'offline_access,email'
-  
+
   mattr_accessor :facebook_callback_url
   @@facebook_callback_url = nil
-  
+
 end
 
 Devise.add_module(:devise_oauth2_facebook,
